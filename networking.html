@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking & Building Connections - Career Resources</title>
+     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #0056b3;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        /* Header & Navigation */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0056b3;
+        }
+        header h1 {
+            color: #0056b3;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #0056b3;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #e8f4fd;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        /* Main Content */
+        main {
+            margin-bottom: 40px;
+        }
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+        }
+        section h2 {
+            color: #0056b3;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid #0056b3;
+        }
+        section h3 {
+            color: #0056b3;
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+        }
+        section h4 {
+            color: #333;
+            font-size: 1.2rem;
+            margin: 15px 0 10px;
+        }
+        section p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+        /* Lists */
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.05rem;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #0056b3;
+            color: white;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #e8f4fd;
+        }
+        /* Image Containers */
+        .img-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .img-container img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .img-caption {
+            margin-top: 10px;
+            color: #666;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        /* Resource Links */
+        .resource-link {
+            display: inline-block;
+            color: #0056b3;
+            text-decoration: underline;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .resource-link:hover {
+            color: #0056b3;
+        }
+        .btn-link {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 12px 24px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .btn-link:hover {
+            background-color: #0056b3;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #0056b3;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        footer nav {
+            margin-top: 15px;
+        }
+        footer nav ul {
+            gap: 15px;
+        }
+        footer nav a {
+            font-size: 0.95rem;
+        }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+            section h3 {
+                font-size: 1.3rem;
+            }
+            table {
+                font-size: 0.95rem;
+            }
+            th, td {
+                padding: 10px 8px;
+            }
+            .img-container img {
+                max-width: 90%;
+            }
+            nav ul {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Header with Navigation -->
+    <header>
+  <h1 style="margin-left: 10px;">
+    <img style="width: 100px;" src="images/UMSI_signature_vertical_informal_solidblue.jpg" 
+         alt="University of Michigan School of Information logo" />
+    Career Development Resources
+  </h1>
+
+  <nav aria-label="Main Navigation">
+    <ul style="list-style: none; display: flex; gap: 20px; justify-content: center; margin: 20px 0; padding: 10px; background-color: #f8f9fa; border-radius: 6px;">
+      <li><a href="index.html" style="color: #0056b3; text-decoration: none; font-weight: 500;">Home</a></li>
+      <li><a href="resume.html" style="color: #0056b3; text-decoration: none; font-weight: 500;">Resume</a></li>
+      <li><a href="networking.html" style="color: #0056b3; text-decoration: none; font-weight: 500;">Networking & Connections</a></li>
+      <li><a href="interviews.html" style="color: #0056b3; text-decoration: none; font-weight: 500;">Interviews</a></li>
+    </ul>
+  </nav></header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section>
+            <h2>Strategic Networking with a LAMP List</h2>
+            <p>The LAMP List is a powerful tool designed to help job seekers identify and prioritize target organizations for strategic networking—critical steps before applying for jobs or internships. By organizing key information about potential employers, you can focus your networking efforts on opportunities that align with your goals, values, and background.</p>
+        </section>
+
+        <section>
+            <h3>What is a LAMP List?</h3>
+            <p>LAMP stands for <strong>List</strong> (of organizations), <strong>Alumni</strong> (connections at each organization), <strong>Motivation</strong> (your interest level), and <strong>Posting</strong> (current job openings). This spreadsheet-based tool helps you track 40 target organizations and prioritize them for networking and applications.</p>
+            
+            <h4>LAMP List Structure</h4>
+            <p>Create a spreadsheet (Excel or Google Sheets) with 5 core columns:</p>
+            <table border="1">
+                <tr>
+                    <th>#</th>
+                    <th>List (Organization Name)</th>
+                    <th>Alumni (Y/N: Do you have a connection?)</th>
+                    <th>Motivation (1-5 ranking)</th>
+                    <th>Posting (1-3 ranking of current openings)</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Ernst & Young</td>
+                    <td>Y</td>
+                    <td>5</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>MathWorks</td>
+                    <td>Y</td>
+                    <td>4</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Arbor Metrix</td>
+                    <td>Y</td>
+                    <td>3</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>40</td>
+                    <td>DC Public Library</td>
+                    <td>Y</td>
+                    <td>4</td>
+                    <td>2</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>Step 1: Build Your "List" of 40 Organizations</h3><img src="images/pic2.png" alt="Example LAMP List spreadsheet structure"/>
+            <p>Curate 40 organizations across 4 categories—mix small, medium, and large companies (note: 33.2 million small businesses made up 99.9% of all U.S. businesses in 2022, per the U.S. Small Business Administration).</p>
+            
+            <h4>1. 10 "Dream" Organizations</h4>
+            <ul>
+                <li>Start with employers you’ve always wanted to work for or are curious about (include their competitors!)</li>
+                <li>Align with your values/identities: Use resources like the Human Rights Campaign Corporate Equality Index, 50+ Black-owned/led companies, Corporate Religious Equity, Diversity & Inclusion (REDI) Index, or Certified B Corporations</li>
+                <li>Lean into hobbies: Search for organizations tied to your interests (e.g., top music streaming companies if you love music, travel apps if you enjoy traveling)</li>
+            </ul>
+
+            <h4>2. 10 Alumni Organizations</h4>
+            <ul>
+                <li>Focus on employers that hire U-M/UMSI alumni (use UMSI Employment & Internship Reports, UCAN, or LinkedIn)</li>
+                <li>International students: Use the International Alumni Outcomes spreadsheet to find companies with a history of hiring international candidates</li>
+                <li>Expand beyond U-M: Include organizations connected to your other affiliations, associations, or communities</li>
+            </ul>
+
+            <h4>3. 10 Organizations with Job Postings</h4>
+            <ul>
+                <li>Use job aggregators like Indeed: Enter a job title/function in the "WHAT" field and location in the "WHERE" field (e.g., "Data Engineer" in "Seattle")</li>
+                <li>International students: Use tools like the Ultimate H1B Sponsor Checker Chrome Extension to identify companies that may offer sponsorship</li>
+            </ul>
+
+            <h4>4. 10 Trending or Sponsorship-Focused Organizations</h4>
+            <ul>
+                <li>Find "trending" organizations: Search Google with keywords like "[Industry/Job] Trends" (e.g., "Machine Learning Trends," "Health Data Trends," "Fastest Growing Companies in Seattle")</li>
+                <li>International students: Prioritize companies with sponsorship history (use sites like Interstride or MyVisaJobs)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Step 2: Fill the "Alumni" Column</h3>
+            <p>Identify if you have alumni or connections at each organization—this helps you leverage existing networks for informational interviews or referrals.</p>
+            
+            <h4>How to Search for Alumni</h4>
+            <ol>
+                <li>Sign into LinkedIn and navigate to the University of Michigan page</li>
+                <li>Click on the "Alumni" tab to access the alumni dashboard</li>
+                <li>Type the name of an organization from your list to see U-M alumni who work there</li>
+                <li>Mark "Y" (Yes) in the Alumni column if you find a connection; mark "N" (No) if not</li>
+            </ol>
+            <img src="images/pic1.png" alt="Screenshot showing LinkedIn alumni search for organizations"/>
+        
+        </section>
+
+        <section>
+            <h3>Step 3: Rank "Motivation" (1-5)</h3>
+            <p>Assess your interest in each organization to prioritize your efforts. Use a 1-5 scale, where 5 = most interested and 1 = least interested.</p>
+            
+            <h4>Questions to Guide Your Ranking</h4>
+            <ul>
+                <li>Which organizations are you most curious about or drawn to?</li>
+                <li>What is your general opinion of the organization’s mission, culture, or work?</li>
+                <li>Does the organization align with your key skills, values, or identities?</li>
+            </ul>
+
+            <table border="1">
+                <tr>
+                    <th>Motivation Score</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Favorite Organizations (Top Priority)</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Second Tier Options</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Third Tier Options</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Least Favorite Organizations</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Organizations Unknown to You</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h3>Step 4: Track "Posting" (1-3)</h3>
+            <p>Check if each organization has current job openings that match your target role. Use job aggregators like Indeed or Google to search.</p>
+            
+            <h4>How to Score Postings</h4>
+            <table border="1">
+                <tr>
+                    <th>Posting Score</th>
+                    <th>Criteria</th>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Found a job opening for your target role (or a similar role)</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>No matching roles, but found <em>any</em> current postings at the organization</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>No current job postings found</td>
+                </tr>
+            </table>
+
+            <p><strong>Search Tip:</strong> Enter the organization name + your target role in the "What" field (e.g., "Library of Congress Librarian"). Add a location in the "Where" field if you have a specific area in mind.</p>
+        </section>
+
+        <section>
+            <h3>Step 5: Sort Your LAMP List</h3>
+            <p>Sorting helps you identify top-priority organizations for networking and applications. Use these 3 levels of sorting (in order):</p>
+            
+            <ol>
+                <li><strong>First Level:</strong> Motivation Column (Largest to Smallest) - 5s first</li>
+                <li><strong>Second Level:</strong> Posting Column (Largest to Smallest) - 3s first</li>
+                <li><strong>Third Level:</strong> Alumni Column (Reverse Alphabetical) -"Y" first</li>
+            </ol>
+
+        
+
+            <p><strong>Action Step:</strong> Start networking with the top organizations on your sorted list—reach out to alumni, request informational interviews, or apply for open roles!</p>
+        </section>
+
+        <section>
+            <h3>Pro Tips for Success</h3>
+            <ul>
+                <li>✔ <strong>Speed over perfection:</strong> Create your LAMP List in 40 minutes—focus on good information quickly, not exhaustive research.</li>
+                <li>✔ <strong>International students:</strong> Add a "Sponsorship" column to track organizations with a history of sponsoring visas (prioritize these!)</li>
+                <li>✔ <strong>Next steps:</strong> Use the CDO Canvas Site's "Networking & Informational Interview" module for resources on writing networking emails, conducting informational interviews, and more.</li>
+            </ul>
+        </section>
+
+        <section>
+  <h3>Useful Networking Resources</h3>
+  <ul>
+    <li>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <span> - Search for alumni and connect with professionals</span>
+    </li>
+    <li>
+      <a href="https://interstride.com/" target="_blank" rel="noopener">Interstride</a>
+      <span> - Find sponsorship-friendly companies (for international students)</span>
+    </li>
+    <li>
+      <a href="https://www.myvisajobs.com/" target="_blank" rel="noopener">MyVisaJobs</a>
+      <span> - Research visa sponsorship history</span>
+    </li>
+    <li>
+      <a href="https://www.indeed.com/" target="_blank" rel="noopener">Indeed</a>
+      <span> - Search for job postings and use H1B sponsor tools</span>
+    </li>
+    <li>
+      <a href="https://cdo.umich.edu/" target="_blank" rel="noopener">U-M Career Development Office (CDO)</a>
+      <span> - Access UCAN, alumni reports, and Canvas modules</span>
+    </li>
+  </ul>
+</section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+  <p>&copy; 2025 Career Development Resources</p>
+  <p>Contact: careercenter@example.com</p>
+
+  <nav aria-label="Footer Navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="networking.html">Networking & Connections</a></li>
+      <li><a href="interviews.html">Interviews</a></li>
+    </ul>
+  </nav>
+</footer>
+
+
